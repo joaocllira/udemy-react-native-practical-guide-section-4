@@ -4,7 +4,7 @@ import { TextInput, View, StyleSheet, Alert } from 'react-native';
 import Colors from '../constants/colors';
 
 // Components
-import PrimaryButton from '../components/PrimaryButton';
+import PrimaryButton from '../components/ui/PrimaryButton';
 
 export default function StartGameScreen({
     onPickNumber,
