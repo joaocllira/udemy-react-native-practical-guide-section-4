@@ -1,6 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
+import Title from '../components/ui/Title';
+import Card from '../components/ui/Card';
 
 export default function GameOverScreen() {
-    return <View></View>;
+    return (
+        <Card>
+            <Title>Game Over!</Title>
+        </Card>
+    );
 }
