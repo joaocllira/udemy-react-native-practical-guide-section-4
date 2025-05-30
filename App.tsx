@@ -8,10 +8,10 @@ import GameOverScreen from './screens/GameOverScreen';
 import Colors from './constants/colors';
 
 export default function App() {
-    const [userNumber, setUserNumber] = useState();
-    const [gameIsOver, setGameIsOver] = useState(true);
+    const [userNumber, setUserNumber] = useState<number>();
+    const [gameIsOver, setGameIsOver] = useState<boolean>(true);
 
-    function pickedNumberHandler(pickedNumber) {
+    function pickedNumberHandler(pickedNumber: number) {
         setUserNumber(pickedNumber);
         setGameIsOver(false);
     }
@@ -29,7 +29,14 @@ export default function App() {
     }
 
     if (gameIsOver && userNumber) {
-        screen = <GameOverScreen />;
+        screen = (
+            <GameOverScreen
+                restartGame={() => {
+                    setUserNumber(undefined);
+                    setGameIsOver(true);
+                }}
+            />
+        );
     }
 
     return (
