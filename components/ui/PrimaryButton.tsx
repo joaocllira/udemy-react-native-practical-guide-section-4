@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontSize: 18,
+        flexShrink: 0,
     },
     pressed: {
         opacity: 0.75,

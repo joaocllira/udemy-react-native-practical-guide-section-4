@@ -7,13 +7,14 @@ export default function InstructionText({
     style,
 }: {
     children: string;
-    style: any;
+    style?: any;
 }) {
     return <Text style={[styles.instructionText, style]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
     instructionText: {
+        fontFamily: 'open-sans',
         color: Colors.accent500,
         fontSize: 24,
     },

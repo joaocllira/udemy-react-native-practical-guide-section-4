@@ -1,17 +1,72 @@
-import React from 'react';
-import Card from '../components/ui/Card';
-import Title from '../components/ui/Title';
+// React
+import React, { use } from 'react';
+import { Image, View, Text, StyleSheet } from 'react-native';
+
+// Components
 import PrimaryButton from '../components/ui/PrimaryButton';
+import Title from '../components/ui/Title';
+
+// Constants
+import Colors from '../constants/colors';
 
 export default function GameOverScreen({
-    restartGame,
+    roundsNumber,
+    userNumber,
+    onStartNewGame,
 }: {
-    restartGame: () => void;
+    roundsNumber: number;
+    userNumber: number;
+    onStartNewGame: () => void;
 }) {
     return (
-        <Card>
-            <Title>Game Over!</Title>
-            <PrimaryButton onPress={() => restartGame()}>Return</PrimaryButton>
-        </Card>
+        <View style={styles.rootContainer}>
+            <Title>GAME OVER!</Title>
+            <View style={styles.imageContainer}>
+                <Image
+                    style={styles.image}
+                    source={require('../assets/images/success.png')}
+                />
+            </View>
+            <Text style={styles.summaryText}>
+                Your phone needed{' '}
+                <Text style={styles.highlight}>{roundsNumber}</Text> rounds to
+                guess the number{' '}
+                <Text style={styles.highlight}>{userNumber}</Text>.
+            </Text>
+            <PrimaryButton onPress={() => onStartNewGame()}>
+                Start New Game
+            </PrimaryButton>
+        </View>
     );
 }
+const styles = StyleSheet.create({
+    rootContainer: {
+        flex: 1,
+        padding: 24,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    imageContainer: {
+        width: 300,
+        height: 300,
+        borderRadius: 150,
+        borderWidth: 3,
+        borderColor: Colors.primary800,
+        overflow: 'hidden',
+        margin: 36,
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+    },
+    summaryText: {
+        fontFamily: 'open-sans',
+        fontSize: 24,
+        textAlign: 'center',
+        marginBottom: 24,
+    },
+    highlight: {
+        fontFamily: 'open-sans-bold',
+        color: Colors.primary500,
+    },
+});
